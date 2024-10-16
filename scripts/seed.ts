@@ -62,7 +62,7 @@ async function seedMeetings(db: Db) {
     meetings.push(meeting);
 
     await meetingsCollection.insertMany(meetings);
-    logger.info('Meetings seeded successfully');
+    console.log('Meetings seeded successfully');
   }
 }
 
@@ -98,14 +98,14 @@ async function seedTasks(db: Db) {
         ] as 'pending' | 'in-progress' | 'completed',
         dueDate: new Date(
           meeting.date.getTime() + Math.random() * 7 * 24 * 60 * 60 * 1000
-        ), // Random date within a week of the meeting
+        ),
       };
       tasks.push(task);
     }
   }
 
   await tasksCollection.insertMany(tasks);
-  logger.info('Tasks seeded successfully');
+  console.log('Tasks seeded successfully');
 }
 
 async function runSeed() {
@@ -113,14 +113,14 @@ async function runSeed() {
 
   try {
     await client.connect();
-    logger.info('Connected to MongoDB for seeding');
+    console.log('Connected to MongoDB for seeding');
 
     const db = client.db(DB_NAME);
 
     await seedMeetings(db);
     await seedTasks(db);
   } catch (err) {
-    logger.error('MongoDB connection error:', err);
+    console.error('MongoDB connection error:', err);
   } finally {
     await client.close();
   }

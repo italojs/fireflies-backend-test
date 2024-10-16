@@ -25,11 +25,11 @@ export const authMiddleware = (
 
   try {
     const decoded = jwt.verify(token, config.jwtSecret) as { userId: string };
-    req.userId = decoded.userId; // Attach userId to the request object
-    next(); // Pass to the next middleware
+    req.userId = decoded.userId;
+    next();
   } catch (err) {
-    logger.error((err as Error).message);
+    logger.error((err as Error).message)
     res.status(401).json({ message: 'Invalid or expired token' });
-    return; // Make sure we exit the middleware properly
+    return;
   }
 };
