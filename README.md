@@ -116,15 +116,15 @@ Authorization Header: All routes require a JWT token in the header: Authorizatio
 
 ### Meetings
 
-GET /api/meetings: Get all meetings (paginated)
-GET /api/meetings/:id: Get a single meeting by its ID
-POST /api/meetings: Create a new meeting
-PUT /api/meetings/:id: Update an existing meeting
-DELETE /api/meetings/:id: Delete a meeting
+- GET /api/meetings: Get all meetings (paginated)
+- GET /api/meetings/:id: Get a single meeting by its ID
+- POST /api/meetings: Create a new meeting
+- PUT /api/meetings/:id: Update an existing meeting
+- DELETE /api/meetings/:id: Delete a meeting
 
 ### Tasks
 
-GET /api/tasks: Get all tasks associated with a user
+- GET /api/tasks: Get all tasks associated with a user
 
 ### Error Handling
 
@@ -138,7 +138,7 @@ All errors are managed by a centralized error handler. The API will respond with
 
 ## Common Errors
 
-400 Bad Request: Validation failed, the request body is invalid.
-401 Unauthorized: No valid token provided or the token is expired.
-404 Not Found: The requested resource does not exist.
-500 Internal Server Error: Something went wrong on the server side.
+- 400 Bad Request: Validation failed, the request body is invalid.
+- 401 Unauthorized: No valid token provided or the token is expired.
+- 404 Not Found: The requested resource does not exist.
+- 500 Internal Server Error: Something went wrong on the server side.
