@@ -1,0 +1,131 @@
+2024-10-16T15:10:02.849Z info: Primary process 66940 is running
+2024-10-16T15:10:07.874Z info: Connected to MongoDB
+2024-10-16T15:10:07.883Z info: Connected to MongoDB
+2024-10-16T15:10:07.889Z info: Connected to MongoDB
+2024-10-16T15:10:07.904Z info: Connected to Redis
+2024-10-16T15:10:07.904Z info: Connected to Redis
+2024-10-16T15:10:07.906Z info: Connected to MongoDB
+2024-10-16T15:10:07.922Z info: Worker 66956 is running on port 3000
+2024-10-16T15:10:07.924Z info: Worker 66958 is running on port 3000
+2024-10-16T15:10:07.932Z info: Connected to Redis
+2024-10-16T15:10:07.939Z info: Worker 66961 is running on port 3000
+2024-10-16T15:10:07.946Z info: Connected to MongoDB
+2024-10-16T15:10:07.966Z info: Connected to Redis
+2024-10-16T15:10:07.980Z info: Worker 66959 is running on port 3000
+2024-10-16T15:10:07.982Z info: Connected to Redis
+2024-10-16T15:10:07.997Z info: Connected to MongoDB
+2024-10-16T15:10:08.014Z info: Worker 66960 is running on port 3000
+2024-10-16T15:10:08.014Z info: Connected to Redis
+2024-10-16T15:10:08.013Z info: Connected to MongoDB
+2024-10-16T15:10:08.022Z info: Worker 66957 is running on port 3000
+2024-10-16T15:10:08.028Z info: Connected to Redis
+2024-10-16T15:10:08.036Z info: Worker 66963 is running on port 3000
+2024-10-16T15:10:08.650Z info: Connected to MongoDB
+2024-10-16T15:10:08.656Z info: Connected to MongoDB
+2024-10-16T15:10:08.659Z info: Connected to MongoDB
+2024-10-16T15:10:08.675Z info: Connected to Redis
+2024-10-16T15:10:08.681Z info: Connected to Redis
+2024-10-16T15:10:08.683Z info: Worker 66966 is running on port 3000
+2024-10-16T15:10:08.684Z info: Connected to Redis
+2024-10-16T15:10:08.684Z info: Connected to MongoDB
+2024-10-16T15:10:08.687Z info: Worker 66964 is running on port 3000
+2024-10-16T15:10:08.690Z info: Worker 66965 is running on port 3000
+2024-10-16T15:10:08.698Z info: Connected to Redis
+2024-10-16T15:10:08.703Z info: Worker 66962 is running on port 3000
+2024-10-16T15:10:11.578Z info: Connected to MongoDB
+2024-10-16T15:10:11.601Z info: Connected to Redis
+2024-10-16T15:10:11.600Z info: Connected to MongoDB
+2024-10-16T15:10:11.610Z info: Worker 66969 is running on port 3000
+2024-10-16T15:10:11.618Z info: Connected to Redis
+2024-10-16T15:10:11.627Z info: Worker 66968 is running on port 3000
+2024-10-16T15:10:11.696Z info: Connected to MongoDB
+2024-10-16T15:10:11.696Z info: Connected to MongoDB
+2024-10-16T15:10:11.709Z info: Connected to Redis
+2024-10-16T15:10:11.710Z info: Connected to Redis
+2024-10-16T15:10:11.709Z info: Connected to MongoDB
+2024-10-16T15:10:11.715Z info: Worker 66970 is running on port 3000
+2024-10-16T15:10:11.716Z info: Worker 66967 is running on port 3000
+2024-10-16T15:10:11.719Z info: Connected to Redis
+2024-10-16T15:10:11.724Z info: Worker 66971 is running on port 3000
+2024-10-16T15:10:21.652Z error: jwt expired
+2024-10-16T15:10:25.998Z info: Worker shutting down gracefully...
+2024-10-16T15:10:25.998Z info: Worker shutting down gracefully...
+2024-10-16T15:10:25.998Z info: Worker shutting down gracefully...
+2024-10-16T15:10:25.998Z info: Worker shutting down gracefully...
+2024-10-16T15:10:25.998Z info: Worker shutting down gracefully...
+2024-10-16T15:10:25.998Z info: Worker shutting down gracefully...
+2024-10-16T15:10:25.998Z info: Worker shutting down gracefully...
+2024-10-16T15:10:25.998Z info: Worker shutting down gracefully...
+2024-10-16T15:10:25.999Z info: Worker shutting down gracefully...
+2024-10-16T15:10:25.998Z info: Worker shutting down gracefully...
+2024-10-16T15:10:25.998Z info: Worker shutting down gracefully...
+2024-10-16T15:10:25.998Z info: Worker shutting down gracefully...
+2024-10-16T15:10:25.998Z info: Worker shutting down gracefully...
+2024-10-16T15:10:25.998Z info: Worker shutting down gracefully...
+2024-10-16T15:10:25.998Z info: Worker shutting down gracefully...
+2024-10-16T15:10:25.999Z info: Worker shutting down gracefully...
+2024-10-16T15:10:33.802Z info: Primary process 67778 is running
+2024-10-16T15:10:37.610Z info: Connected to MongoDB
+2024-10-16T15:10:37.620Z info: Connected to MongoDB
+2024-10-16T15:10:37.648Z info: Connected to Redis
+2024-10-16T15:10:37.648Z info: Connected to Redis
+2024-10-16T15:10:37.642Z info: Connected to MongoDB
+2024-10-16T15:10:37.653Z info: Connected to MongoDB
+2024-10-16T15:10:37.661Z info: Worker 67795 is running on port 3000
+2024-10-16T15:10:37.661Z info: Worker 67797 is running on port 3000
+2024-10-16T15:10:37.662Z info: Connected to Redis
+2024-10-16T15:10:37.672Z info: Worker 67796 is running on port 3000
+2024-10-16T15:10:37.674Z info: Connected to Redis
+2024-10-16T15:10:37.683Z info: Worker 67798 is running on port 3000
+2024-10-16T15:10:38.503Z info: Connected to MongoDB
+2024-10-16T15:10:38.526Z info: Connected to Redis
+2024-10-16T15:10:38.518Z info: Connected to MongoDB
+2024-10-16T15:10:38.541Z info: Worker 67800 is running on port 3000
+2024-10-16T15:10:38.543Z info: Connected to MongoDB
+2024-10-16T15:10:38.554Z info: Connected to Redis
+2024-10-16T15:10:38.569Z info: Worker 67799 is running on port 3000
+2024-10-16T15:10:38.754Z info: Connected to Redis
+2024-10-16T15:10:38.816Z info: Worker 67801 is running on port 3000
+2024-10-16T15:10:39.153Z info: Connected to MongoDB
+2024-10-16T15:10:39.174Z info: Connected to Redis
+2024-10-16T15:10:39.183Z info: Worker 67802 is running on port 3000
+2024-10-16T15:10:40.593Z info: Connected to MongoDB
+2024-10-16T15:10:40.607Z info: Connected to Redis
+2024-10-16T15:10:40.615Z info: Worker 67805 is running on port 3000
+2024-10-16T15:10:40.678Z info: Connected to MongoDB
+2024-10-16T15:10:40.676Z info: Connected to MongoDB
+2024-10-16T15:10:40.690Z info: Connected to MongoDB
+2024-10-16T15:10:40.685Z info: Connected to MongoDB
+2024-10-16T15:10:40.699Z info: Connected to Redis
+2024-10-16T15:10:40.702Z info: Connected to MongoDB
+2024-10-16T15:10:40.708Z info: Connected to Redis
+2024-10-16T15:10:40.711Z info: Worker 67806 is running on port 3000
+2024-10-16T15:10:40.711Z info: Connected to Redis
+2024-10-16T15:10:40.715Z info: Connected to Redis
+2024-10-16T15:10:40.716Z info: Worker 67810 is running on port 3000
+2024-10-16T15:10:40.720Z info: Connected to Redis
+2024-10-16T15:10:40.721Z info: Worker 67804 is running on port 3000
+2024-10-16T15:10:40.719Z info: Connected to MongoDB
+2024-10-16T15:10:40.726Z info: Worker 67803 is running on port 3000
+2024-10-16T15:10:40.728Z info: Worker 67809 is running on port 3000
+2024-10-16T15:10:40.740Z info: Connected to Redis
+2024-10-16T15:10:40.736Z info: Connected to MongoDB
+2024-10-16T15:10:40.746Z info: Worker 67807 is running on port 3000
+2024-10-16T15:10:40.749Z info: Connected to Redis
+2024-10-16T15:10:40.754Z info: Worker 67808 is running on port 3000
+2024-10-16T15:10:47.922Z info: Worker shutting down gracefully...
+2024-10-16T15:10:47.922Z info: Worker shutting down gracefully...
+2024-10-16T15:10:47.922Z info: Worker shutting down gracefully...
+2024-10-16T15:10:47.922Z info: Worker shutting down gracefully...
+2024-10-16T15:10:47.922Z info: Worker shutting down gracefully...
+2024-10-16T15:10:47.922Z info: Worker shutting down gracefully...
+2024-10-16T15:10:47.922Z info: Worker shutting down gracefully...
+2024-10-16T15:10:47.922Z info: Worker shutting down gracefully...
+2024-10-16T15:10:47.922Z info: Worker shutting down gracefully...
+2024-10-16T15:10:47.922Z info: Worker shutting down gracefully...
+2024-10-16T15:10:47.922Z info: Worker shutting down gracefully...
+2024-10-16T15:10:47.922Z info: Worker shutting down gracefully...
+2024-10-16T15:10:47.922Z info: Worker shutting down gracefully...
+2024-10-16T15:10:47.922Z info: Worker shutting down gracefully...
+2024-10-16T15:10:47.922Z info: Worker shutting down gracefully...
+2024-10-16T15:10:47.922Z info: Worker shutting down gracefully...

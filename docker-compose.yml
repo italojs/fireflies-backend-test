@@ -1,0 +1,46 @@
+version: '3.8'
+
+services:
+  app:
+    container_name: node_app
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - '3000:3000'
+    environment:
+      - MONGO_URI=mongodb://mongo:27017/meetingbot
+      - REDIS_URL=redis://redis:6379
+      - JWT_SECRET=yourSecretKey
+      - PORT=3000
+    depends_on:
+      - mongo
+      - redis
+    command: npm start
+    networks:
+      - backend
+
+  mongo:
+    container_name: mongo_db
+    image: mongo:latest
+    ports:
+      - '27017:27017'
+    volumes:
+      - mongo_data:/data/db
+    networks:
+      - backend
+
+  redis:
+    container_name: redis_cache
+    image: redis:latest
+    ports:
+      - '6379:6379'
+    networks:
+      - backend
+
+networks:
+  backend:
+    driver: bridge
+
+volumes:
+  mongo_data:

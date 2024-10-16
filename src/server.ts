@@ -1,28 +1,85 @@
+import dotenv from 'dotenv';
+dotenv.config();
+
 import express from 'express';
-import mongoose from 'mongoose';
-import { meetingRoutes } from './routes/meetings.js';
-import { taskRoutes } from './routes/task.router.js';
-import { dashboardRoutes } from "./routes/dashboardRoutes.js";
-import { authMiddleware } from './auth.middleware.js';
+import { connectDB } from './data/database/db';
+import { connectRedis } from './data/clients/redis';
+import { MeetingRepository } from './data/database/repositories/meeting';
+import { TaskRepository } from './data/database/repositories/task';
+import { MeetingService } from './services/meeting';
+import { TaskService } from './services/task';
+import { meetingRoutes } from './routes/meetings';
+import { taskRoutes } from './routes/tasks';
+import { authMiddleware } from './middlewares/auth';
+import { errorHandler } from './middlewares/errorHandler';
+import { config } from './config';
+import cluster from 'cluster';
+import os from 'os';
+import { logger } from './utils/logger';
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = config.port;
+const numCPUs = os.cpus().length;
 
-await mongoose.connect('mongodb://localhost:27017/meetingbot')
-  .then((conn) => console.log('Connected to MongoDB'))
-  .catch(err => console.error('MongoDB connection error:', err));
+const initializeApp = async () => {
+  try {
+    const db = await connectDB(config.mongoUri);
+    const redisClient = await connectRedis();
 
-app.use(express.json());
+    const meetingRepository = new MeetingRepository(db);
+    const taskRepository = new TaskRepository(db);
 
-app.get('/', (req, res) => {
-  res.json({ message: 'Welcome to the MeetingBot API' });
-});
+    const meetingService = new MeetingService(meetingRepository, redisClient);
+    const taskService = new TaskService(taskRepository, redisClient);
 
-app.use('/api/meetings', authMiddleware, meetingRoutes);
-app.use('/api/tasks', authMiddleware, taskRoutes);
-app.use('/api/dashboard', authMiddleware, dashboardRoutes);
+    app.use(express.json());
+    app.use(authMiddleware);
 
+    app.use('/api/meetings', meetingRoutes(meetingService));
+    app.use('/api/tasks', taskRoutes(taskService));
 
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-});
+    app.use(errorHandler);
+
+    return { db, redisClient };
+  } catch (err) {
+    logger.error('Failed to initialize app:', err);
+    process.exit(1);
+  }
+};
+
+if (cluster.isPrimary) {
+  logger.info(`Primary process ${process.pid} is running`);
+
+  for (let i = 0; i < numCPUs; i++) {
+    cluster.fork();
+  }
+
+  cluster.on('exit', (worker, code, signal) => {
+    logger.info(
+      `Worker ${worker.process.pid} exited with code ${code}, signal ${signal}. Starting a new worker...`
+    );
+    cluster.fork();
+  });
+} else {
+  initializeApp().then(() => {
+    const server = app.listen(PORT, () => {
+      logger.info(`Worker ${process.pid} is running on port ${PORT}`);
+    });
+
+    process.on('unhandledRejection', (reason) => {
+      logger.error('Unhandled Rejection:', reason);
+      server.close(() => {
+        process.exit(1);
+      });
+    });
+
+    process.on('SIGINT', () => {
+      logger.info('Worker shutting down gracefully...');
+      server.close(() => {
+        process.exit(0);
+      });
+    });
+  });
+}
+
+export { app, initializeApp };

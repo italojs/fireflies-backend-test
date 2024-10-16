@@ -1,81 +1,144 @@
-# Fireflies.ai backend test
+# MeetingBot API
 
-This project looks awful, somebody really messed it up. Can you help us fix it?
+MeetingBot API is a service for managing meetings and tasks with caching using Redis and persistent storage in MongoDB. This API allows users to create, update, delete, and view meetings and tasks, while optimizing performance by reducing the number of database queries through caching.
 
-## Instructions
+## Table of Contents
 
-Create a fork of this repository, and set up the project locally. 
-Ensure that you have MongoDB running locally, and node v22.
+- [Technologies](#technologies)
+- [Features](#features)
+- [Installation](#installation)
+- [Configuration](#configuration)
+- [Running the Project](#running-the-project)
+- [Running Tests](#running-tests)
+- [Available API Endpoints](#available-api-endpoints)
+- [Error Handling](#error-handling)
 
+## Technologies
+
+- **Node.js**: Backend runtime
+- **Express**: Web framework for handling routes and middleware
+- **MongoDB**: Database used for storing meetings and tasks
+- **Redis**: Cache layer to improve performance
+- **Joi**: Input validation for incoming requests
+- **Jest**: Testing framework for unit and integration tests
+- **Supertest**: For testing API endpoints
+- **Typescript**: Strongly typed language for building scalable Node.js applications
+- **Docker**: Containerization platform to run the application
+- **Docker Compose**: Tool for defining and running multi-container Docker applications
+
+## Features
+
+- **Meeting Management**: Create, read, update, and delete meetings.
+- **Task Management**: Manage tasks tied to meetings.
+- **Caching**: Redis is used to cache meeting data, reducing database queries and improving performance.
+- **Input Validation**: Requests are validated with Joi for security and data integrity.
+- **Error Handling**: Centralized error handling using custom middleware.
+
+## Installation
+
+1. **Clone the Repository**:
+
+   ```bash
+   git clone git@github.com:italojs/fireflies-backend-test.git
+   cd fireflies-backend-test
+   ```
+
+2. **Run the application using `docker-compose`**:
+   Make sure you have Docker and Docker Compose installed on your machine. Then, simply run:
+
+   ```bash
+   docker-compose up --build
+   ```
+
+   This will build and start the containers for your application, including the Node.js server, MongoDB, and Redis.
+
+3. **Check the application**:
+   Once the services are up, the API will be available at `http://localhost:3000` (or the port you configured in `.env`).
+
+## Configuration
+
+1. Create a `.env` file in the root directory of your project. The environment variables should be added like this:
+
+   ```env
+   MONGODB_URI=mongodb://mongo:27017/meetingbot
+   REDIS_URL=redis://redis:6379
+   PORT=3000
+   JWT_SECRET=yourSecretKey
+   ```
+
+   The `MONGODB_URI` and `REDIS_URL` point to the service names defined in `docker-compose.yml`.
+
+## Running the Project
+
+To run the project, you only need to use Docker Compose:
+
+```bash
+docker-compose up --build
 ```
-npm i
-npm run seed
-npm start
+
+This will start the application on the port specified in the .env file (default is 3000).
+
+## Generate jwt
+
+`docker-compose exec app npm run jwt` 
+
+it will prints a 1h jwt for you in the terminal 
+
+
+## To stop the project, run:
+
+```bash
+docker-compose down
 ```
 
-### Project Setup:
+Running Tests
+To run unit and regression tests, use the following command inside the container:
 
-* Organize the project structure to improve maintainability (if you think it's necessary).
-* Add basic error handling and input validation to all endpoints.
-* It seems there is a very critical bug here. Can you spot it?
-* Also, it doesn't look very performant as the meeting count increases. Would it scale?
-* (Bonus) Implement basic unit tests for at least one endpoint.
+```bash
+docker-compose exec app npm run test
+```
 
-It should not take you more than **2-3 hours** to implement this.
+## Seed the Database
 
+To populate your database with initial data, you can run the seed script:
 
-### API
+```bash
+docker-compose exec app npm run seed
+```
 
-By the end of the project, we should have the following endpoints implemented:
+This will add sample meetings and tasks to your MongoDB database.
 
-* `GET /api/meetings`
+## Available API Endpoints
 
-Retrieves all the meetings for the user.
+### Authentication
 
-* `POST /api/meetings`
+Authorization Header: All routes require a JWT token in the header: Authorization: Bearer <token>
 
-Create a new meeting with title, date, and participants.
+### Meetings
 
-* `GET /api/meetings/:id`
+GET /api/meetings: Get all meetings (paginated)
+GET /api/meetings/:id: Get a single meeting by its ID
+POST /api/meetings: Create a new meeting
+PUT /api/meetings/:id: Update an existing meeting
+DELETE /api/meetings/:id: Delete a meeting
 
-Retrieve a specific meeting by ID. Include its tasks.
+### Tasks
 
-* `PUT /api/meetings/:id/transcript`
+GET /api/tasks: Get all tasks associated with a user
 
-Update a meeting with its transcript.
+### Error Handling
 
-* `POST /api/meetings/:id/summarize`
+All errors are managed by a centralized error handler. The API will respond with the appropriate HTTP status code and a JSON body containing the error message. Example of error response:
 
-Generate a summary and action items for a meeting (you can use a mock AI service for this).
-Once the AI service returns the action items, you should automatically create the tasks for this meeting.
+```json
+{
+  "message": "Authentication required"
+}
+```
 
-* `GET /api/tasks`
+## Common Errors
 
-Returns all the tasks assigned to the user
-
-* `GET /api/meetings/stats`
-
-Return statistics about meetings, such as the total number of meetings, average number of participants, and most frequent participants.
-Please follow the data structure defined in the router file.
-
-* (Bonus) `GET /api/dashboard`
-
-Return a summary of the user's meetings, including count and upcoming meetings, task counts by status, and past due tasks. The data structure is also defined in the endpoint file.
-
-
-### Containerize it!
-
-You should add a Dockerfile and include clear instructions about how to run this on our local environment. The easier, the better. 
-In order to evaluate it, we'll run it on our local hosts, seeding with known data and will compare the output of the requested endpoints.
-
-
-## Evaluation Criteria:
-
-We want you to impress us with your attention to detail, but some points that will be evaluated are:
-
-* Documentation - clear instructions on a README file are the other developer's best friend.
-* Code quality and organization - we can only scale if we have high-quality, maintainable code
-* Ability to identify and fix the existing bug - security bugs would be a disaster for the company
-* Implementation of the stats (and the bonus, dashboard) endpoints using performant, aggregation queries
-* Error handling and input validation
-* Bonus points for unit tests or any additional features related to the AI bot concept
+400 Bad Request: Validation failed, the request body is invalid.
+401 Unauthorized: No valid token provided or the token is expired.
+404 Not Found: The requested resource does not exist.
+500 Internal Server Error: Something went wrong on the server side.
